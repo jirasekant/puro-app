@@ -1,0 +1,14 @@
+services:
+	- App\Core\RouterFactory::createRouter
+	# Register EasyRdf SPARQL Client
+	# 'fuseki' refers to the container service name inside the Docker network
+	easyrdf.sparql: EasyRdf\Sparql\Client('http://%fuseki.user%:%fuseki.password%@fuseki:3030/ds/sparql', 'http://%fuseki.user%:%fuseki.password%@fuseki:3030/ds/update')
+
+
+search:
+	-	in: %appDir%
+		classes:
+			- *Facade
+			- *Factory
+			- *Repository
+			- *Service

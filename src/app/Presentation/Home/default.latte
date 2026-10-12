@@ -1,0 +1,43 @@
+{block content}
+	<div id="content" style="padding: 20px;">
+		<h1>Interactive RDF / PURO Canvas</h1>
+		<p>Drag nodes around to test the graph layout:</p>
+
+		<!-- Canvas Container -->
+		<div id="puro-canvas" style="width: 100%; height: 600px; border: 1px solid #ccc; background-color: #fafafa; border-radius: 8px;"></div>
+	</div>
+
+	<!-- Vis-Network CDN -->
+	<script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+
+	<script>
+		// Render graph once DOM is ready
+		document.addEventListener('DOMContentLoaded', function () {
+			const container = document.getElementById('puro-canvas');
+
+			// Data received from Nette presenter
+			const data = {
+				nodes: new vis.DataSet({$nodes|noescape}),
+				edges: new vis.DataSet({$edges|noescape})
+			};
+
+			const options = {
+				nodes: {
+					shape: 'box',
+					margin: 10,
+					font: { face: 'sans-serif', size: 14 }
+				},
+				edges: {
+					arrows: 'to',
+					font: { align: 'top', size: 12 },
+					smooth: { type: 'cubicBezier' }
+				},
+				physics: {
+					solver: 'forceAtlas2Based'
+				}
+			};
+
+			const network = new vis.Network(container, data, options);
+		});
+	</script>
+{/block}

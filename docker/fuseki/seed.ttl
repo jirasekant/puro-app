@@ -1,0 +1,36 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix puro: <http://example.org/puro#> .
+@prefix ex:   <http://example.org/data#> .
+
+# Sample PURO-style background model for local development.
+# Kept under 50 triples so the whole graph fits in the homepage query (LIMIT 50).
+
+# --- B-types (universals) ---
+ex:Person      rdf:type puro:BType ;   rdfs:label "Person" .
+ex:Scientist   rdf:type puro:BType ;   rdfs:label "Scientist" ;   puro:subTypeOf ex:Person .
+ex:University  rdf:type puro:BType ;   rdfs:label "University" .
+ex:Paper       rdf:type puro:BType ;   rdfs:label "Paper" .
+
+# --- B-objects (particulars) ---
+ex:Alice       puro:instanceOf ex:Scientist ;  rdfs:label "Alice Novak" .
+ex:Bob         puro:instanceOf ex:Scientist ;  rdfs:label "Bob Svoboda" .
+ex:Carol       puro:instanceOf ex:Person ;     rdfs:label "Carol Dvorak" .
+ex:CTU         puro:instanceOf ex:University ; rdfs:label "Czech Technical University" .
+ex:Paper1      puro:instanceOf ex:Paper ;      rdfs:label "Modelling Ontologies with PURO" .
+
+# --- B-relations ---
+ex:worksAt     rdf:type puro:BRelation ; rdfs:label "works at" .
+ex:authorOf    rdf:type puro:BRelation ; rdfs:label "author of" .
+ex:knows       rdf:type puro:BRelation ; rdfs:label "knows" .
+
+# --- Facts between B-objects ---
+ex:Alice  ex:worksAt  ex:CTU .
+ex:Bob    ex:worksAt  ex:CTU .
+ex:Alice  ex:authorOf ex:Paper1 .
+ex:Bob    ex:authorOf ex:Paper1 .
+ex:Alice  ex:knows    ex:Carol .
+
+# --- Attribute values ---
+ex:Paper1 ex:publishedYear "2024" .
+ex:CTU    ex:city          "Prague" .

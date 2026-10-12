@@ -1,0 +1,12 @@
+# Secrets (committed templates: .env.example, src/config/local.neon.dist)
+.env
+src/config/local.neon
+
+# Generated / runtime files
+src/log/*
+!src/log/.gitkeep
+src/temp/*
+!src/temp/.gitkeep
+src/vendor/
+src/node_modules/
+src/www/assets/
