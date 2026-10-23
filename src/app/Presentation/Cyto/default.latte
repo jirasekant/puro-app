@@ -1,0 +1,21 @@
+{block content}
+	<div style="padding: 20px;">
+		<h1>PURO diagram (Cytoscape)</h1>
+
+		<p>
+			<label>Layout:
+				<select id="layout">
+					<option value="cose">cose</option>
+					<option value="breadthfirst">breadthfirst</option>
+					<option value="circle">circle</option>
+					<option value="grid">grid</option>
+				</select>
+			</label>
+			<button type="button" id="fit">Fit</button>
+		</p>
+
+		<div id="cy" data-elements={$elements} style="width: 100%; height: 600px; border: 1px solid #ccc; background-color: #fafafa; border-radius: 8px;"></div>
+	</div>
+
+	{asset 'cyto.js'}
+{/block}

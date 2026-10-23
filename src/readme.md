@@ -41,6 +41,10 @@ This project supports Vite for asset building, which is recommended but optional
 		npm install
 		npm run build
 
+Without Node on the host, build in Docker from the repo root:
+
+		docker run --rm -u 1000:1000 -e HOME=/tmp -v "$PWD/src:/app" -w /app node:22 sh -c "npm install && npm run build"
+
 
 Web Server Setup
 ----------------

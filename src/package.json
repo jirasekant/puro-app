@@ -1,6 +1,7 @@
 {
 	"type": "module",
 	"dependencies": {
+		"cytoscape": "^3.34.4",
 		"nette-forms": "^3.3"
 	},
 	"devDependencies": {
